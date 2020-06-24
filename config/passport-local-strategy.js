@@ -4,15 +4,16 @@
  */
 
  const passport = require('passport');
-const User = require('../models/user');
- 
+
  const LocalStrategy = require('passport-local').Strategy;
 
- const User = require('../models/user');
+ const User = require("../models/user");
+
+
  
 //  authentication using passport
- passport.use(new.LocalStrategy({
-    usernameField: 'email',
+ passport.use(new LocalStrategy({
+    usernameField: 'email'
     
     },
     function(email, password, done){
@@ -23,8 +24,8 @@ const User = require('../models/user');
                 return done(err);
             }
 
-            if(!user || user.passport != password){
-                console.log('Invalid USername/Password');
+            if(!user || user.password != password){
+                console.log('Invalid Username/Password');
                 return done(null, false);
             }
 
