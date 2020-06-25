@@ -6,13 +6,20 @@
   <div class="nav-container">
   <ul class="left-item">
     <li>WECONNECT EXPRESS </li>
+
+    <li>
+      
+    </li>
+   
   </ul>
 
 
 <ul class="right-item">
   <% if (locals.user){ %>
     <li>
+    <button class = "usr-btn" >
       <a href="/users/profile"><%= user.name%></a>
+      </button>
     </li>
     <li>
       <button>
