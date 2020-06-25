@@ -14,7 +14,8 @@ footer {
     font-size: 30px;
     letter-spacing: 6px; }
   footer .list-item {
-    padding: 0 20px; }
+    padding: 0 25px;
+    margin-top: 5px; }
   footer ul li {
     list-style-type: none; }
   footer .list-heading {
