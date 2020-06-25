@@ -13,6 +13,9 @@ module.exports.profile = function (req, res) {
 // sign Up
 
 module.exports.signUp = function(req,res){
+  if (req.isAuthenticated()){
+    return res.redirect('/users/profile');
+  }
   return res.render('user_sign_up', {
     titleName: "WeConnect | Sign Up",
   });
@@ -21,6 +24,9 @@ module.exports.signUp = function(req,res){
 // Sign In
 
 module.exports.signIn = function(req,res){
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
   return res.render('user_sign_in',{
     titleName: "WeConnect | Sign In",
   });
