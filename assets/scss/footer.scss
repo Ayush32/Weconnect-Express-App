@@ -1,0 +1,41 @@
+footer{
+    left: 0;
+    bottom: 0;
+    background-color: #0cbaba;
+    background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+
+    width: 100%;
+    position: fixed;
+
+    .footer-container{
+        display: flex;
+        margin: 0 20px;
+    }
+    .footer-heading h2{
+        margin-top: 45px;
+        color: white;
+        font-size: 30px;
+        letter-spacing: 6px;
+    }
+    .list-item{
+        padding: 0 20px;
+    }
+
+    ul li{
+        list-style-type: none;
+    }
+
+    .list-heading{
+        color: white;
+    }
+    .list-item li a{
+        color:rgb(255, 247, 0);
+        transition: all ease-in-out 0.1s;
+        text-decoration: none;
+    }
+    .list-item li a:hover{
+        color: rgb(255, 208, 0);
+    }
+    
+}
+
