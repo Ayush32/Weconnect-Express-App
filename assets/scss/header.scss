@@ -1,7 +1,5 @@
 // basic styling
-body{
-    overflow: hidden;
-}
+
 
 *{
     box-sizing: border-box;
@@ -12,7 +10,9 @@ body{
         background-color: black;
         padding:0 15px;
         
-    
+    body {
+        overflow: hidden;
+    }
         
     }
 
