@@ -1,33 +1,47 @@
+
+
+
 <nav>
 
-  <h1> WECONNECT EXPRESS</h1>
-<ul>
+  <div class="nav-container">
+  <ul class="left-item">
+    <li>WECONNECT EXPRESS </li>
+  </ul>
+
+
+<ul class="right-item">
   <% if (locals.user){ %>
     <li>
       <a href="/users/profile"><%= user.name%></a>
     </li>
     <li>
+      <button>
       <a href="/users/sign-out">sign Out</a>
+      </button>
     </li>
 
   <% }else{ %>
 
     <li>
+      <button>
       <a href="/users/sign-in">
         Sign In
       </a>
+      </button>
+
     </li>
 
     <li>
+      <button>
       <a href="/users/sign-up">
       Sign Up</a>
+      </button>
     </li>
 
 
     <% } %>
    
-
 </ul>
 
-
+</div>
 </nav>
