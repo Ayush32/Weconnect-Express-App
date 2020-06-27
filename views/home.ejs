@@ -30,7 +30,8 @@
                         <form action="/comments/create" method="POST">
                             <input type="text" name="content" placeholder=" Type Here to add comment...">
                             <input type="hidden" name="post" value="<%= post._id %>">
-                            <a href=""><i class="fas fa-comment"></i></a>
+                            <input type="submit" value="Add Comment">
+
 
                         </form>
                         <% } %>
