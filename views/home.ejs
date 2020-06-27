@@ -15,7 +15,13 @@
          <ul>
              <% for(post of posts){ %>
                 <li>
-                    <%= post.content%>
+                    <p>
+                        <%= post.content%>
+                    <br>
+                    <small>
+                        <%= post.user.name %>
+                    </small>
+                    </p>
                 </li>
 
                 <% } %>
