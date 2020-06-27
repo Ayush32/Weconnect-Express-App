@@ -8,10 +8,12 @@ const Post = require('../models/post');
      Post.create({
          content: req.body.content,
          user: req.user._id
-     },function(err, post){
+     },function(err, posts){
          if(err){
             console.log('error in creating a post');
-            return res.redirect('back');
-         }
-     })
+         return;
+        }
+
+            return res.redirect('back')
+     });
  }
