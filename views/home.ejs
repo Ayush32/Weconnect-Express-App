@@ -20,15 +20,18 @@
    
                 <li class="post-list">
                     <p>
+                            <% if (locals.user && locals.user.id == post.user.id){ %>
+                <small>
+                    <a href="/posts/destroy/<%= post.id %>">X</a>
+                </small>
+                <% } %>
                         <%= post.content%>
                     </p>
                      <div class="post-time">
                         11:30 AM
                     </div>
-                    <hr>
-                   
-                  
-                        
+                    <hr>  
+                
                             
                         
                     </div>
