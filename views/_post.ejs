@@ -19,17 +19,14 @@
             <hr>
             <div class="container">
                 <a href=""><i class="far fa-heart"></i></a>
-                <a href=""><i class="fas fa-comment"></i></a>
+                <a href="#collapseExample" data-toggle = "collapse" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-comment"></i></a>
                 <a href=""><i class="fab fa-telegram-plane"></i></a>
 
             </div>
-             <p>
-            <% if (locals.user && locals.user.id == post.user.id){ %>
-            <small>
-                <a href="/posts/destroy/<%= post.id %>">X</a>
-            </small>
-            <% } %>
-        </p>
+            <div class="collapse" id="collapseExample">
+                <p>Please Login to See Comment</p>
+</div>
+             
     </div>
 </div>
 
@@ -60,3 +57,12 @@
         </div>
         
     </li>
+
+
+    <p>
+            <% if (locals.user && locals.user.id == post.user.id){ %>
+            <small>
+                <a href="/posts/destroy/<%= post.id %>">X</a>
+            </small>
+            <% } %>
+        </p>
