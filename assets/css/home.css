@@ -1,0 +1,38 @@
+section {
+  width: 50vw;
+  top: 20px;
+  min-height: 100vh;
+  left: 0;
+  right: 0;
+  position: relative;
+  margin: auto; }
+
+#post-button {
+  margin-top: -10px; }
+
+.card {
+  margin-top: 7.5%;
+  margin-bottom: -5%; }
+
+.card .container {
+  margin-left: -4%; }
+
+.card .card-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px; }
+
+.card .container a {
+  padding: 0 10px; }
+
+.card .container i {
+  font-size: 24px; }
+
+.card {
+  box-shadow: 0 8px 10px 3px lightgrey;
+  border: 1px solid #e9e9e9;
+  border-radius: 0px;
+  transition: all ease-in-out .8s; }
+
+.card:hover {
+  box-shadow: 0 0 0 0; }

@@ -5,11 +5,13 @@
                 <a href="/comments/destroy/<%= comment.id %>">X</a>
             </small>
             <% } %>
+            <% if(locals.user){ %>
             <%= comment.content %>
             <br>
             <small>
                 <%= comment.user.name %>
             </small>
+            <% } %>
         </p>    
 
 </li>

@@ -1,16 +1,41 @@
-<li>
-        <p>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">
+            <%= post.user.name %>
+             </h3>
+             <div class="card-info">
+                 <div>
+                     Tue 28 Jun 2020
+                 </div>
+                 
+                 <div>
+                     11:30 AM
+                 </div>
+             </div>
+            <p class="card-text">
+                <%= post.content %>
+            </p>
+            
+            <hr>
+            <div class="container">
+                <a href=""><i class="far fa-heart"></i></a>
+                <a href=""><i class="fas fa-comment"></i></a>
+                <a href=""><i class="fab fa-telegram-plane"></i></a>
+
+            </div>
+             <p>
             <% if (locals.user && locals.user.id == post.user.id){ %>
             <small>
                 <a href="/posts/destroy/<%= post.id %>">X</a>
             </small>
             <% } %>
-            <%= post.content %>
-            <br>
-            <small>
-                <%= post.user.name %>
-            </small>
         </p>
+    </div>
+</div>
+
+
+<li>
+       
         <div class="post-comments">
             <% if (locals.user){ %>
                 <form action="/comments/create" method="POST">
@@ -22,6 +47,7 @@
             <% } %>
 
             <div class="post-comments-list">
+                
                 <ul id="post-comments-<%= post._id %>">
                     <% for (comment of post.comments){%>
 

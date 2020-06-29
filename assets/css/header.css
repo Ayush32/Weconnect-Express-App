@@ -25,14 +25,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 700; }
-  * .fas {
-    font-size: 25px;
-    margin-top: 5px;
-    color: #9c47fc;
-    display: block;
-    background: -webkit-linear-gradient(#ffff00, #ff0000);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; }
   * .right-item {
     display: flex; }
   * .right-item li {
