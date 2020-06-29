@@ -3,8 +3,9 @@
  *   All rights reserved.
  */
 
- const Post = require('../models/post');
+const Post = require('../models/post');
 const { populate } = require('../models/post');
+const User = require('../models/user');
 
 //  Another controller which access by routes
 module.exports.home = function(req,res){
@@ -29,10 +30,13 @@ module.exports.home = function(req,res){
         }
     })
     .exec(function(err, posts){
+
+        User.find({}, function(err, users){
         return res.render('home',{
             titleName: 'WeConnect | Home',
-            posts: posts
-
+            posts: posts,
+            all_users: users
+        });
     });
 })
 

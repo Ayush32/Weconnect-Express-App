@@ -41,6 +41,8 @@ hr {
     overflow: scroll; }
     .row section:nth-child(3) #all-users-container::-webkit-scrollbar {
       display: none; }
+    .row section:nth-child(3) #all-users-container .list-group-item {
+      background-color: black; }
   .row section:nth-child(3) a:hover {
     text-decoration: none;
     color: red; }

@@ -24,3 +24,31 @@
     </div>
 
     </section>
+
+    <section id="users-friends" class="col-sm-3 mt-4 pb-4 pt-3">
+        <h4>
+            Friends
+        </h4>
+
+        <hr>
+
+        <div id="all-users-container">
+            
+        <h4>All users</h4>
+            <ul class="list-group">
+                 <% for(u of all_users){ %>
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+     <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+  </li>
+   <% } %>
+</ul>
+        </div>
+
+
+    </section>
+
+   
+
+</div>
+
+</div>
