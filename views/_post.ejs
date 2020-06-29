@@ -20,7 +20,7 @@
          <div class="card-text mt-2"><small><%=post.user.updatedAt.toString().substr(0, 15)%></small></div>
         <p class="card-text" style="margin-top:12px"><%=post.content%></p>
         
-        <hr style="color: white;">
+        <hr>
 
         <div class="align-middle action-buttons">
             <!-- like button on post -->
@@ -43,7 +43,7 @@
             <button type="submit" class="btn btn-primary btn-sm mt-2 mb-2 mr-2">Add Comment</button>
         </form>
         <!-- comments list container -->
-        <hr>
+        <hr style=" background-color: grey;height: 1px;border: none;">
         <div class="post-comments-lister-list pl-4 pr-4">
             <div id="post-comments-<%=post._id%>">
                 <%for(comment of post.comments){%>

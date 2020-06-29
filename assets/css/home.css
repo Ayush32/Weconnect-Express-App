@@ -14,7 +14,9 @@
     box-shadow: 0px 0px 2px 1px #f0f0f0; }
 
 hr {
-  color: white; }
+  background-color: white;
+  height: 1px;
+  border: none; }
 
 .row section:nth-child(3) {
   height: 95vh;
