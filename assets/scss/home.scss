@@ -1,62 +1,80 @@
-body,html{
-    margin: 0;
-    padding: 0;
-    overflow: scroll;
-
-body::-webkit-scrollbar {
-    display: none;
-}
-section{
-    width: 50vw;
-    top: 20px;
-    min-height: 100vh;
-    left: 0;
-    right: 4%;
-    position: relative;
-    margin: auto;
-
-}
-
-    #post-button {
-        margin-top: -10px;
-
-    }
-
-    .card {
-        margin-top: 7.5%;
-        margin-bottom: -5%;
-        min-height: 40vh;
-
-    }
-
-    .card .container {
-        margin-left: -4%;
-    }
-
-    .card .card-info {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 10px;
-    }
-
-    .card .container a {
-        padding: 0 10px;
-    }
-
-    .card .container i {
+.card-body {
+    a {
         font-size: 20px;
+
+        &:hover {
+            color: red;
+        }
     }
+}
 
-    .card {
-        box-shadow: 0 8px 10px 3px lightgrey;
-        border: 1px solid rgb(233, 233, 233);
-        border-radius: 0px;
-        transition: all ease-in-out .8s;
+.card {
+    box-shadow: 0px 5px 10px 1px rgb(219, 219, 219);
+    transition: all ease-in-out 0.2s;
+
+    &:hover {
+        box-shadow: 0px 0px 2px 1px rgb(240, 240, 240);
     }
+}
 
-    .card:hover {
-        box-shadow: 0 0 0 0;
+.row {
+    section:nth-child(3) {
+        $sub-container-height: 47%;
+        height: 95vh;
+        overflow: hidden;
+
+        #friends-container {
+            height: $sub-container-height;
+            overflow: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+                ;
+            }
+        }
+
+        #all-users-container {
+            height: $sub-container-height;
+            overflow: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+                ;
+            }
+        }
+
+        a {
+            &:hover {
+                text-decoration: none;
+                color: red;
+            }
+        }
+
+        .badge {
+            color: white;
+
+            &:hover {
+                color: white;
+                cursor: pointer;
+            }
+        }
+
+        ul {
+            overflow: scroll;
+            max-height: 75vh;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
     }
+}
 
+.action-buttons {
+    cursor: pointer;
+}
 
+:root a:hover {
+    text-decoration: none;
 }

@@ -1,37 +1,43 @@
-body, html {
-  margin: 0;
-  padding: 0;
-  overflow: scroll; }
-  body body::-webkit-scrollbar, html body::-webkit-scrollbar {
-    display: none; }
-  body section, html section {
-    width: 50vw;
-    top: 20px;
-    min-height: 100vh;
-    left: 0;
-    right: 4%;
-    position: relative;
-    margin: auto; }
-  body #post-button, html #post-button {
-    margin-top: -10px; }
-  body .card, html .card {
-    margin-top: 7.5%;
-    margin-bottom: -5%;
-    min-height: 40vh; }
-  body .card .container, html .card .container {
-    margin-left: -4%; }
-  body .card .card-info, html .card .card-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px; }
-  body .card .container a, html .card .container a {
-    padding: 0 10px; }
-  body .card .container i, html .card .container i {
-    font-size: 20px; }
-  body .card, html .card {
-    box-shadow: 0 8px 10px 3px lightgrey;
-    border: 1px solid #e9e9e9;
-    border-radius: 0px;
-    transition: all ease-in-out .8s; }
-  body .card:hover, html .card:hover {
-    box-shadow: 0 0 0 0; }
+.card-body a {
+  font-size: 20px; }
+  .card-body a:hover {
+    color: red; }
+
+.card {
+  box-shadow: 0px 5px 10px 1px #dbdbdb;
+  transition: all ease-in-out 0.2s; }
+  .card:hover {
+    box-shadow: 0px 0px 2px 1px #f0f0f0; }
+
+.row section:nth-child(3) {
+  height: 95vh;
+  overflow: hidden; }
+  .row section:nth-child(3) #friends-container {
+    height: 47%;
+    overflow: scroll; }
+    .row section:nth-child(3) #friends-container::-webkit-scrollbar {
+      display: none; }
+  .row section:nth-child(3) #all-users-container {
+    height: 47%;
+    overflow: scroll; }
+    .row section:nth-child(3) #all-users-container::-webkit-scrollbar {
+      display: none; }
+  .row section:nth-child(3) a:hover {
+    text-decoration: none;
+    color: red; }
+  .row section:nth-child(3) .badge {
+    color: white; }
+    .row section:nth-child(3) .badge:hover {
+      color: white;
+      cursor: pointer; }
+  .row section:nth-child(3) ul {
+    overflow: scroll;
+    max-height: 75vh; }
+    .row section:nth-child(3) ul::-webkit-scrollbar {
+      display: none; }
+
+.action-buttons {
+  cursor: pointer; }
+
+:root a:hover {
+  text-decoration: none; }

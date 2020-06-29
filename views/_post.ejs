@@ -2,7 +2,7 @@
     <div class="card-body">
 
         <!-- options to delete a post and stuff -->
-        <% if(locals.user&&locals.user.id==post.user.id){ %>
+        <% if(locals.user && locals.user.id==post.user.id){ %>
         <div class="dropdown">
             <a class="float-right" href="" id="more_options<%=post._id%>" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
