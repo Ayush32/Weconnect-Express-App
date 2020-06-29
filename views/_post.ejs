@@ -1,68 +1,57 @@
-<div class="card">
+<div class="card w-100 mt-3 mb-2" id="post_<%=post._id%>">
     <div class="card-body">
-        <h3 class="card-title">
-            <%= post.user.name %>
-             </h3>
-             <div class="card-info">
-                 <div>
-                     Tue 28 Jun 2020
-                 </div>
-                 
-                 <div>
-                     11:30 AM
-                 </div>
-             </div>
-            <p class="card-text">
-                <%= post.content %>
-            </p>
-            
-            <hr>
-            <div class="container">
-                <a href=""><i class="far fa-heart"></i></a>
-                <a href="#collapseExample" data-toggle = "collapse" aria-expanded="false" aria-controls="collapseExample"><i class="fas fa-comment"></i></a>
-                <a href=""><i class="fab fa-telegram-plane"></i></a>
 
-            </div>
-            <div class="collapse" id="collapseExample">
-                <p>Please Login to See Comment</p>
-</div>
-             
-    </div>
-</div>
-
-
-<li>
-       
-        <div class="post-comments">
-            <% if (locals.user){ %>
-                <form action="/comments/create" method="POST">
-                    <input type="text" name="content" placeholder="Type Here to add comment..." required>
-                    <input type="hidden" name="post" value="<%= post._id %>" >
-                    <input type="submit" value="Add Comment">
-                </form>
-
-            <% } %>
-
-            <div class="post-comments-list">
-                
-                <ul id="post-comments-<%= post._id %>">
-                    <% for (comment of post.comments){%>
-
-                     <%- include('_comment') -%>
-                        
-                    
-                    <%} %>
-                </ul>
+        <!-- options to delete a post and stuff -->
+        <% if(locals.user&&locals.user.id==post.user.id){ %>
+        <div class="dropdown">
+            <a class="float-right" href="" id="more_options<%=post._id%>" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fas fa-ellipsis-h"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="more_options<%=post._id%>">
+                <a class="dropdown-item delete-post-button" href="/posts/destroy/<%=post.id%>"><i
+                        class="fas fa-trash-alt"></i>
+                    Delete</a>
             </div>
         </div>
+        <%}%>
+         <h5 class="card-title"><%=post.user.name%></h5>
+         <div class="card-text mt-2"><small><%=post.user.updatedAt.toString().substr(0, 15)%></small></div>
+        <p class="card-text" style="margin-top:12px"><%=post.content%></p>
         
-    </li>
+        <hr>
 
+        <div class="align-middle action-buttons">
+            <!-- like button on post -->
+           
+            <!-- comment button on post -->
 
-    <p>
-            <% if (locals.user && locals.user.id == post.user.id){ %>
-            <small>
-                <a href="/posts/destroy/<%= post.id %>">X</a>
-            </small>
-            <% } %>
-        </p>
+            <a data-toggle="collapse" href="#collapse<%=post._id%>" role="button" aria-expanded="false"
+            aria-controls="collapse<%=post._id%>"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
+            <!-- send button on post -->
+            <a href=""><i class="fas fa-paper-plane"></i></a>
+        </div>
+    </div>
+
+    <div class="collapse post-comments mr-2 ml-2" id="collapse<%=post._id%>">
+        <%if(locals.user){%>
+        <form action="/comments/create" method="POST" class="new-comment-form">
+            <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username"
+                aria-describedby="basic-addon1" name="content" required>
+            <input type="hidden" name="post" value="<%=post._id%>">
+            <button type="submit" class="btn btn-primary btn-sm mt-2 mb-2 mr-2">Add Comment</button>
+        </form>
+        <!-- comments list container -->
+        <hr>
+        <div class="post-comments-lister-list pl-4 pr-4">
+            <div id="post-comments-<%=post._id%>">
+                <%for(comment of post.comments){%>
+                <%- include('_comment') -%>
+                <%}%>
+            </div>
+        </div>
+        <%}else{%>
+                <p>Please Log In to see Comments!</p>
+                <%}%>
+    </div>
+</div>
