@@ -15,11 +15,12 @@
             </div>
         </div>
         <%}%>
-         <h5 class="card-title"><%=post.user.name%></h5>
+   
+        <h5 class="card-title"><%=post.user.name%></h5>
          <div class="card-text mt-2"><small><%=post.user.updatedAt.toString().substr(0, 15)%></small></div>
         <p class="card-text" style="margin-top:12px"><%=post.content%></p>
         
-        <hr>
+        <hr style="color: white;">
 
         <div class="align-middle action-buttons">
             <!-- like button on post -->
@@ -35,7 +36,7 @@
 
     <div class="collapse post-comments mr-2 ml-2" id="collapse<%=post._id%>">
         <%if(locals.user){%>
-        <form action="/comments/create" method="POST" class="new-comment-form">
+        <form action="/comments/create" method="POST" class="new-comment-form" style="margin-top: 10px;">
             <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username"
                 aria-describedby="basic-addon1" name="content" required>
             <input type="hidden" name="post" value="<%=post._id%>">

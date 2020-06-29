@@ -26,7 +26,9 @@
     -webkit-text-fill-color: transparent;
     font-weight: 700; }
   * .right-item {
-    display: flex; }
+    display: flex;
+    justify-content: center;
+    align-items: center; }
   * .right-item li {
     padding: 0  10px; }
   * .right-item li button {

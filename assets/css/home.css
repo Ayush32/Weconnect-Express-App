@@ -1,13 +1,20 @@
-.card-body a {
-  font-size: 20px; }
-  .card-body a:hover {
+.card-body {
+  background-color: black;
+  color: white; }
+  .card-body a {
+    font-size: 20px;
     color: red; }
+    .card-body a:hover {
+      color: greenyellow; }
 
 .card {
   box-shadow: 0px 5px 10px 1px #dbdbdb;
   transition: all ease-in-out 0.2s; }
   .card:hover {
     box-shadow: 0px 0px 2px 1px #f0f0f0; }
+
+hr {
+  color: white; }
 
 .row section:nth-child(3) {
   height: 95vh;
