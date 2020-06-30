@@ -38,7 +38,13 @@
     <%- style %>
   </head>
   <body>
+
     <%- include('_header'); %>
+    <% if(flash.success %% flash.success.length > 0){ %>
+      <h4>
+        <% fLash.success %>
+      </h4>
+      <% } %>
 
     <main id="layout-main">
       <%- body -%>
