@@ -1,17 +1,37 @@
-<li>
-        <p>
-            <% if (locals.user && locals.user.id == comment.user.id){ %>
-            <small>
-                <a href="/comments/destroy/<%= comment.id %>">X</a>
-            </small>
+<div class="fluid-container">
+     <% if (locals.user && locals.user.id == comment.user.id){ %>
+            <div class="dropdown">
+            <a class="float-right" href="" id="more_options<%=post._id%>" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+                <i class="fas fa-ellipsis-h"></i>
+            </a>
+             <div class="dropdown-menu" aria-labelledby="more_options<%=post._id%>">
+                <a class="dropdown-item delete-post-button" href="/comments/destroy/<%= comment.id %>" style="color: red;"><i
+                        class="fas fa-trash-alt"></i>
+                    Delete</a>
+                    
+                </div>
             <% } %>
             <% if(locals.user){ %>
-            <%= comment.content %>
-            <br>
-            <small>
-                <%= comment.user.name %>
-            </small>
-            <% } %>
-        </p>    
+                <div>
+                     <h5 style="font-size: 14px;"> <%= comment.user.name %></h5>
+           <small><%= comment.content %></small>
+                </div>
+               
+<div class="align-middle action-buttons">
+            <!-- like button on post -->
+           
+            <!-- comment button on post -->
 
-</li>
+            <a data-toggle="collapse" href="#" role="button" aria-expanded="false"
+            aria-controls="collapse<%=post._id%>"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
+            <!-- send button on post -->
+            <a href="#"><i class="fas fa-paper-plane"></i></a>
+        </div>
+            
+            <% } %>
+            <hr>
+  
+
+</div>
+        
