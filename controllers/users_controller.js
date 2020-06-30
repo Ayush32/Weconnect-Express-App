@@ -3,7 +3,8 @@
  *   All rights reserved.
  */
 
- const User = require('../models/user')
+ const User = require('../models/user');
+const { findByIdAndUpdate } = require('../models/user');
 
 module.exports.profile = function (req, res) {
   User.findById(req.params.id, function(err,user){
@@ -15,6 +16,20 @@ module.exports.profile = function (req, res) {
   });
   })
 };
+
+//  profile update
+
+module.exports.update = function(req, res){
+  if(req.user.id == req.params.id){
+    User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
+      return res.redirect('back')
+    });
+  }
+  else{
+    // send the status sever when someone who has not authorized
+    return res.status(401).send('Unauthorized');
+  }
+}
 
 // sign Up
 
