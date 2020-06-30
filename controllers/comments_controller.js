@@ -20,13 +20,13 @@ const Post = require('../models/post');
              // handle error
             post.comments.push(comment);
            post.save();
-
+           req.flash('success', 'Comments Added!')
            res.redirect("/");
          }
     }
     catch(err){
-        console.log('Error', err);
-        return;
+        req.flash('error',err)
+        return res.redirect('back');
 
     }
  }
@@ -46,15 +46,17 @@ const Post = require('../models/post');
              {
                $pull: { comments: req.params.id },
              })
+             req.flash('success','Comment are deleted!')
                return res.redirect("back");
          } else {
+           req.flash('error','Not Authorized to delete comments!!')
            return res.redirect("back");
          }
 
     }
     catch(err){
-        console.log('Error', err);
-        return;
+        req.flash('error',err)
+        return res.redirect('back');
     }
     
 
