@@ -48,7 +48,7 @@
         <!-- comments list container -->
         <hr style=" background-color: grey;height: 1px;border: none;">
         <div class="post-comments-lister-list pl-4 pr-4">
-            <div id="post-comments-<%=post._id%>">
+            <div id="posts-comments-<%=post._id%>">
                 <%for(comment of post.comments){%>
                 <%- include('_comment') -%>
                 <%}%>

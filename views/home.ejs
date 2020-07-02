@@ -16,9 +16,9 @@
             </form>
             <%}%>
       <div id="posts-container">
-        <% for(post of posts){ %> 
+        <% itr=0; for(post of locals.posts){ %> 
             <%- include('_post') -%>
-            <%} %>
+            <% itr++;} %>
     </div>
     </section>
 

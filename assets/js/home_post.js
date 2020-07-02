@@ -2,134 +2,225 @@
  *   Copyright (c) 2020 
  *   All rights reserved.
  */
-// method to submit the form data for new post using AJAX
-
-function noty_flash(type, message) {
-  new Noty({
-    theme: "metroui",
-    text: message,
-    type: type,
-    layout: "topRight",
-    timeout: 1000,
-  }).show();
+/* post functionalities */
+function noty_flash(type, message)
+{
+    new Noty({
+        theme: 'metroui',
+        text: message,
+        type: type,
+        layout: 'topRight',
+        timeout: 1000,
+    }).show();
 }
 
- {
-     let createPost = function(){
-         let newPostForm = $('#new-post-form');
+/* method to submit the form data for new post using ajax */
+let create_post = () =>
+{
+    let new_post_form = $('#new-post-form');
+    new_post_form.submit((event) =>
+    {
+        event.preventDefault();
 
-         newPostForm.submit(function(e){
-             e.preventDefault();
+        $.ajax(
+            {
+                type: 'POST',
+                url: '/posts/create',
+                data: new_post_form.serialize()/* this will serialize the data recieved into the json format */,
+                success: (data) =>
+                {
+                    /* the data we are recieving here is already in json format! */
+                    let new_post = new_post_dom(data.data);
+                    $('#posts-container').prepend(new_post);
 
-             $.ajax ({
-                 type: 'POST',
-                 url: '/posts/create',
-                 data: newPostForm.serialize(),
-                 success: function(data){
-                     let newPost =  newPostDom(data.data.post);
-                     $('#posts-container').prepend(newPost);
-                     noty_flash("success", "Post Created Successfully!");
-                      $("textarea")[0].value = "";
+                    create_Comment($(`#post_${data.data.post_id} .new-comment-form`));
 
-                     deletePost($(".delete-post-button",newPost));
-                     
-                     
-                     
-                 }, error: function(error){
-                     console.log(err.responseText)
-                 }
-             });
-         });
-     }
+                    
+                    
+                    
+                    noty_flash('success', 'Post created Successfully!');
 
-    //  method to create a post in DOM
-    let newPostDom = function(post){
-        return $(`<div class="card w-100 mt-3 mb-2" id="post_${post._id}">
-    <div class="card-body">
+                    $('textarea')[0].value = "";/* clearing the text area */
+                    deletePost($(' .delete-post-button', new_post));
+                },
+                error: (error) =>
+                {
+                    console.log(error.responseText);
+                }
+            }
+        );
+    });
+}
+let new_post_dom = (data) =>
+{
+    return $(`<!-- for loop for comment cards -->
+    <div class="card w-100 mt-3 mb-2" id="post_${data.post_id}">
+        <div class="card-body">
+    
+            <!-- options to delete a post and stuff -->
+            
+            <div class="dropdown">
+                <a class="float-right" href="" id="more_options_${
+                  data.post_id
+                }" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+                    <i class="fas fa-ellipsis-h"></i>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="more_options_${
+                  data.post_id
+                }">
+                    <a class="dropdown-item delete-post-button" href="/posts/destroy/${
+                      data.post_id
+                    }"><i
+                            class="fas fa-trash-alt"></i>
+                        Delete</a>
+                </div>
+            </div>
+            
+            <h5 class="card-title">${data.user_name}</h5>
+            <div class="card-text mt-2"><small>${data.updatedAt
+              .toString()
+              .substr(0, 15)}</small></div>
+            <p class="card-text"> ${data.post_content} </p>
+            <div class="card-text mt-2"><small>11:30 PM</small></div>
+            <hr>
+            
+            <a href="/likes/toggle/?id=${data.post_id}&type=Post" id="like-${
+      data.post_id
+    }" class="like-buttons"
+            data-toggle="false" data-likes="0"><i class="far fa-heart"></i> <span>0</span></a>
+            &nbsp&nbsp&nbsp
+            <a data-toggle="collapse" href="#collapse_${
+              data.post_id
+            }" role="button" aria-expanded="false"
+                aria-controls="collapse${
+                  data.post_id
+                }"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
+            <a href=""><i class="fas fa-paper-plane"></i></a>
+        </div>
+        <div class="collapse post-comments mr-2 ml-2" id="collapse_${
+          data.post_id
+        }">
+            
+            <form action="/comments/create" method="POST" class="new-comment-form">
+                <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username"
+                    aria-describedby="basic-addon1" name="content" required>
+                <input type="hidden" name="post" value="${data.post_id}">
+                <button type="submit" class="btn btn-primary btn-sm mt-2 mb-2 mr-2">Add Comment</button>
+            </form>
+            <!-- comments list container -->
+            <hr>
+            <div class="post-comments-lister-list pl-4 pr-4">
+                <div id="post-comments-${data.post_id}">
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>`);
+}
 
-        <!-- options to delete a post and stuff -->
- 
-        <div class="dropdown">
-            <a class="float-right" href="" id="more_options_${post._id}" data-toggle="dropdown" aria-haspopup="true"
+
+// method to delete a post from DOM
+let deletePost = (deleteLink) =>
+{
+    $(deleteLink).click((event) =>
+    {
+        event.preventDefault();
+        $.ajax({
+            type: "GET",
+            url: $(deleteLink).prop('href'),
+            success: (data) =>
+            {
+                $(`#post_${data.data.post_id}`).remove();
+                noty_flash('success', 'Post deleted Successfully')
+            },
+            error: (error) =>
+            {
+                console.log(error.responseText);
+                noty_flash('error', 'There was some error in deleting the post');
+            }
+        });
+    })
+}
+
+let apply_dynamic_delete_to_existing_posts = function ()
+{
+    for (let link of $('.delete-post-button'))
+    {
+        deletePost(link);
+    }
+}
+
+apply_dynamic_delete_to_existing_posts()
+create_post();
+
+// comments 
+
+let create_Comment = function(new_comment_form)
+{   
+    new_comment_form.click((event) =>
+    {
+
+        event.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: '/comments/create',
+                data: new_comment_form.serialize()/* this will serialize the data received into the json format*/,
+                success: (data) =>
+                {
+                    let new_comment = new_comment_dom(data.data);
+                    $(`#post-comments-${data.data.post_id}`).prepend(new_comment);
+                    $(`posts_${data.data.post_id}.new-comment=form input`)[0].value = "";
+                    noty_flash('success','Comment Created Successfully')
+                    
+
+                },
+                error: (error) =>
+                {
+                    noty_flash('error', 'Error in posting a comment')
+                    console.log(error.responseText);
+                }
+            })
+    });
+    
+}
+
+let new_comment_dom = (data) =>
+{
+    return $(`<div class="fluid-container" id="comment_id_${data.comment_id}">
+    
+            <div class="dropdown">
+            <a class="float-right" href="" id="more_options_${data.comment_id}" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
                 <i class="fas fa-ellipsis-h"></i>
             </a>
-            <div class="dropdown-menu" aria-labelledby="more_options_${post._id}">
-                <a class="dropdown-item delete-post-button" href="/posts/destroy/${ post._id }"><i
+             <div class="dropdown-menu" aria-labelledby="more_options_${data.comment_id}">
+                <a class="dropdown-item delete-post-button" href="/comments/destroy/${data.comment_id}" style="color: red;"><i
                         class="fas fa-trash-alt"></i>
                     Delete</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-bookmark"></i>&nbsp;Save Post</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-eye-slash"></i>&nbsp;Hide Post</a>
-            </div>
-        </div>
-        
-        <h5 class="card-title">${post.user_name}</h5>
-        <div class="card-text mt-2"><small>${post.updatedAt.toString().substr(0, 15)}</small></div>
-        <p class="card-text" style="margin-top:12px">${ post.content }</p>
-        <div class="card-text mt-2"><small>11:30 PM</small></div>
-        
-        <hr>
+                    
+                </div>
 
-       
+                <div>
+                     <h5 style="font-size: 14px;">${data.user_name}</h5>
+           <small>${data.comment_content}</small>
+                </div>
+               
+<div class="align-middle action-buttons">
             <!-- like button on post -->
            
             <!-- comment button on post -->
 
-            <a data-toggle="collapse" href="#collapse_${post._id}" role="button" aria-expanded="false"
-            aria-controls="collapse${post._id}"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
+            <a data-toggle="collapse" href="#collpase${data.comment_id}" role="button" aria-expanded="false"
+            aria-controls="collapse${data.comment_id}"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
             <!-- send button on post -->
-            <a href=""><i class="fas fa-paper-plane"></i></a>
+            <a href="#"><i class="fas fa-paper-plane"></i></a>
         </div>
-    </div>
+            <hr>
+  
 
-    <div class="collapse post-comments mr-2 ml-2" id="collapse_${post._id}">
-        
-        <form action="/comments/create" method="POST" class="new-comment-form" style="margin-top: 10px;">
-            <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username"
-                aria-describedby="basic-addon1" name="content" required>
-            <input type="hidden" name="post" value="${post._id}">
-            <button type="submit" data-toggle="tooltip" data-placement="top" title="comment" class="btn btn-danger btn-sm mt-2 mb-2 mr-2">Add Comment</button>
-        </form>
-        <!-- comments list container -->
-        <hr style=" background-color: grey;height: 1px;border: none;">
-        <div class="post-comments-lister-list pl-4 pr-4">
-            <div id="post-comments-${post._id}">
-                
-            </div>
-        </div>
-       
-    </div>
 </div>
-`);
-    }
+        `);
+}
 
-
-
-    // method to delete a post from dom
-
-    let deletePost = function(deleteLink){
-        $(deleteLink).click(function(e){
-            e.preventDefault();
-
-            $.ajax({
-                type: 'GET',
-                url: $(deleteLink).prop('href'),
-                success: function(data){
-                    $(`#post_${data.post._id}`).remove();
-                    noty_flash("success", "Post deleted Successfully");
-
-                }, error: function(error){
-                    console.log(error.responseText);
-                    noty_flash(
-                      "error",
-                      "There was some error in deleting the post"
-                    );
-                }
-            });
-        });
-    }
-
-
-
-     createPost();
- }
