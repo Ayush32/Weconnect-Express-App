@@ -12,7 +12,7 @@ const Post = require('../models/post');
         let post = await Post.findById(req.body.post);
 
          if (post) {
-           let new_comment = await Comment.create({
+           let comment = await Comment.create({
              content: req.body.content,
              post: req.body.post,
              user: req.user._id,
@@ -20,25 +20,10 @@ const Post = require('../models/post');
              // handle error
             post.comments.push(comment);
            post.save();
+           req.flash('success', 'Comments Added!')
+           res.redirect("/");
          }
-         if(req.xhr){
-           console.log(comment);
-           return res.status(200).json(
-             {
-             data:{
-               comment_id: comment._id,
-               user_name: comment.user.name,
-               comment_content: comment.content,
-               post_id: comment.post._id
-             },
-             message:'comment created!'
-           }
-           )
-         }
-         req.flash("success", "New Comments Posted!");
-         res.redirect("/");
     }
-  
     catch(err){
         req.flash('error',err)
         return res.redirect('back');
