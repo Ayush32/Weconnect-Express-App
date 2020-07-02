@@ -33,7 +33,10 @@ let create_post = () =>
                     let new_post = new_post_dom(data.data);
                     $('#posts-container').prepend(new_post);
 
-                    create_Comment($(`#post_${data.data.post_id} .new-comment-form`));
+                 comment_creator(
+                   $(`#post_${data.data.post_id} .new-comment-form`)
+                 );
+
 
                     
                     
@@ -157,70 +160,63 @@ create_post();
 
 // comments 
 
-let create_Comment = function(new_comment_form)
-{   
-    new_comment_form.click((event) =>
-    {
+/* comments functionality */
 
+let comment_creator = function (new_comment_form)
+{
+
+    new_comment_form.submit((event) =>
+    {
         event.preventDefault();
-            $.ajax({
+
+        $.ajax(
+            {
                 type: 'POST',
-                url: '/comments/create',
-                data: new_comment_form.serialize()/* this will serialize the data received into the json format*/,
+                url: "/comments/create",
+                data: new_comment_form.serialize(),
                 success: (data) =>
                 {
                     let new_comment = new_comment_dom(data.data);
                     $(`#post-comments-${data.data.post_id}`).prepend(new_comment);
-                    $(`posts_${data.data.post_id}.new-comment=form input`)[0].value = "";
-                    noty_flash('success','Comment Created Successfully')
-                    
-
+                    $(`#post_${data.data.post_id} .new-comment-form input`)[0].value = "";
+                    noty_flash('success', 'Comment posted Successfully!');
                 },
                 error: (error) =>
                 {
-                    noty_flash('error', 'Error in posting a comment')
+                    noty_flash('success', 'Error in posting a comment!');
                     console.log(error.responseText);
                 }
-            })
-    });
-    
+            }
+        )
+    })
 }
-
-let new_comment_dom = (data) =>
-{
-    return $(`<div class="fluid-container" id="comment_id_${data.comment_id}">
-    
-            <div class="dropdown">
-            <a class="float-right" href="" id="more_options_${data.comment_id}" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+let new_comment_dom = (data) => {
+  return $(`<!-- for deleting a comment -->
+    <div id="comment_id_${data.comment_id}">
+        <div class="dropdown">
+            <a class="float-right" href="" id="more_options_${data.comment_id}" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-ellipsis-h"></i>
             </a>
-             <div class="dropdown-menu" aria-labelledby="more_options_${data.comment_id}">
-                <a class="dropdown-item delete-post-button" href="/comments/destroy/${data.comment_id}" style="color: red;"><i
+            <div class="dropdown-menu" aria-labelledby="more_options_${data.comment_id}">
+                <a class="dropdown-item delete-comment-button" href="/comments/destroy/${data.comment_id}"><i
                         class="fas fa-trash-alt"></i>
                     Delete</a>
-                    
-                </div>
-
-                <div>
-                     <h5 style="font-size: 14px;">${data.user_name}</h5>
-           <small>${data.comment_content}</small>
-                </div>
-               
-<div class="align-middle action-buttons">
-            <!-- like button on post -->
-           
-            <!-- comment button on post -->
-
-            <a data-toggle="collapse" href="#collpase${data.comment_id}" role="button" aria-expanded="false"
-            aria-controls="collapse${data.comment_id}"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
-            <!-- send button on post -->
-            <a href="#"><i class="fas fa-paper-plane"></i></a>
+            </div>
         </div>
-            <hr>
-  
+        <b>${data.user_name}</b>
+        <p>
+            ${data.comment_content}
+        </p>
+        <div class="align-middle action-buttons">
+          
+            <a data-toggle="collapse" href="#collapse${data.comment_id}" role="button" aria-expanded="false"
+            aria-controls="collapse${data.comment_id}"><i class="far fa-comment"></i></a>&nbsp
+            <!-- send button on post -->
+            <a href=""><i class="fas fa-paper-plane"></i></a>
+        </div>
+        <hr>
+    </div>`);
+};
 
-</div>
-        `);
-}
 
