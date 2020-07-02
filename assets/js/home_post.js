@@ -29,6 +29,7 @@ function noty_flash(type, message) {
                      let newPost =  newPostDom(data.data.post);
                      $('#posts-container').prepend(newPost);
                      noty_flash("success", "Post Created Successfully!");
+                      $("textarea")[0].value = "";
 
                      deletePost($(".delete-post-button",newPost));
                      
@@ -62,7 +63,7 @@ function noty_flash(type, message) {
             </div>
         </div>
         
-        <h5 class="card-title">${ post.user_name }</h5>
+        <h5 class="card-title">${post.user_name}</h5>
         <div class="card-text mt-2"><small>${post.updatedAt.toString().substr(0, 15)}</small></div>
         <p class="card-text" style="margin-top:12px">${ post.content }</p>
         <div class="card-text mt-2"><small>11:30 PM</small></div>
@@ -115,8 +116,14 @@ function noty_flash(type, message) {
                 url: $(deleteLink).prop('href'),
                 success: function(data){
                     $(`#post_${data.post._id}`).remove();
+                    noty_flash("success", "Post deleted Successfully");
+
                 }, error: function(error){
                     console.log(error.responseText);
+                    noty_flash(
+                      "error",
+                      "There was some error in deleting the post"
+                    );
                 }
             });
         });
