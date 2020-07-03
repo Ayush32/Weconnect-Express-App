@@ -98,8 +98,7 @@
        font-weight: 600;
        padding-left: 5px;
        
-   }
-  
+   }  
 
 }
 
@@ -107,6 +106,10 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      background-image: linear-gradient(to top, #0250c5 0%, #d43f8d 100%);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
 
   }
 
