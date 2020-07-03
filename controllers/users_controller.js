@@ -5,6 +5,7 @@
 
  const User = require('../models/user');
 const { findByIdAndUpdate } = require('../models/user');
+const { use } = require('passport');
 
 
 // lets keep it same as before
@@ -19,15 +20,46 @@ module.exports.profile = function (req, res) {
 
 //  profile update
 
-module.exports.update = function(req, res){
+module.exports.update = async function(req, res){
+  // if(req.user.id == req.params.id){
+  //   User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
+  //     return res.redirect('back')
+  //   });
+  // }
+  // else{
+  //   // send the status sever when someone who has not authorized
+  //   return res.status(401).send('Unauthorized');
+  // }
+
   if(req.user.id == req.params.id){
-    User.findByIdAndUpdate(req.params.id, req.body, function(err,user){
-      return res.redirect('back')
-    });
+
+    try{
+      let user  = await User.findById(req.params.id);
+      User.uploadedAvatar(req, res, function(err){
+        if(err){
+          console.log('*****Multer Error: ', err)
+        }
+        use.name = req.body.name;
+        user.email = req.body.email;
+        // console.log(req.file);
+        if(req.file){
+          // saving the path of the upload file into the avatar in the user
+          user.avatar = User.avatarPath + '/' + req.file.filename
+        }
+        user.save();
+        return res.redirect('back');
+      })
+
+    }
+    catch(err){
+      req.flash('error', err);
+      return res.redirect('back');
+
+    }
   }
   else{
-    // send the status sever when someone who has not authorized
-    return res.status(401).send('Unauthorized');
+      res.flash('error', 'Unauthorized')
+       return res.status(401).send("Unauthorized");
   }
 }
 
