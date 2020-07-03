@@ -1,13 +1,13 @@
 .container {
-  width: 50%;
-  height: 60vh;
-  background: linear-gradient(to bottom, #D5DEE7 0%, #E8EBF2 50%, #E2E7ED 100%), linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 50%, rgba(255, 255, 255, 0.02) 61%, rgba(0, 0, 0, 0.02) 73%), linear-gradient(33deg, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%);
+  width: 60%;
+  height: 75vh;
+  background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
   background-blend-mode: normal, color-burn;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  margin-top: 6%;
   box-sizing: border-box; }
   .container .form-container form {
     display: flex;
@@ -21,45 +21,55 @@
     font-weight: 700;
     font-size: 35px; }
   .container input {
-    padding: 0 42px;
+    padding: 0 44px;
     margin: 17px 0;
     width: 100%;
     height: 43px;
     border-radius: 20px;
     border-style: none;
     outline: none;
-    color: black;
+    color: #727272;
     transition: all ease-in-out .2s; }
   .container input:hover {
     box-shadow: 0 0 3px 3px white; }
-  .container .form-container i {
-    position: absolute;
-    margin: 27px 13px;
-    color: blueviolet;
-    font-size: 21px; }
   .container .icon {
     background: -webkit-linear-gradient(315deg, #005eff 0%, #7b00ff 74%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-color: #6617cb; }
+    background-color: #6617cb;
+    position: absolute;
+    margin: 27px 13px;
+    color: blueviolet;
+    font-size: 21px; }
   .container .submit-btn button {
     background-color: #2876f9;
     background-image: linear-gradient(315deg, #005eff 0%, #7b00ff 74%);
-    width: 150px;
+    width: 160px;
     margin-top: 10px;
-    height: 40px;
+    height: 38px;
     outline: none;
     border-radius: 20px;
     border: none;
-    color: white; }
+    color: white;
+    transition: all ease-in-out .3s; }
+  .container .submit-btn button:hover {
+    box-shadow: 0 0 4px 5px white; }
   .container input::placeholder {
     background-image: linear-gradient(315deg, #032d75 0%, #9029ff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; }
   .container .extra {
-    margin: 10px 0; }
+    margin-top: 20px; }
   .container .extra p {
-    color: #868686; }
+    color: #868686;
+    color: white;
+    font-weight: 500; }
+  .container .extra .create {
+    background-image: linear-gradient(315deg, #005eff 0%, #7b00ff 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    padding-left: 5px; }
 
 body {
   margin: 0;
