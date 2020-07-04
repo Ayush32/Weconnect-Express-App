@@ -2,10 +2,12 @@
  *   Copyright (c) 2020 
  *   All rights reserved.
  */
+
  const express = require("express");
  const router = express.Router();
 
- router.use('/posts', require('./posts'));
- router.use('/users', require('./users'));
+ const userApi = require('../../../controllers/api/v1/users_api');
+
+ router.post('/create-session', userApi.createSession);
 
  module.exports = router;
