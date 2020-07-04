@@ -10,7 +10,7 @@ const user = require('../models/user');
 const User = require('../models/user');
 
 let opts  = {
-    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken,
+    jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
     secretOrKey: 'weconnect',
 }
 
