@@ -7,6 +7,9 @@
 const { findByIdAndUpdate } = require('../models/user');
 const { use } = require('passport');
 
+const fs = require('fs');
+const path = require('path');
+
 
 // lets keep it same as before
 module.exports.profile = function (req, res) {
@@ -43,16 +46,22 @@ module.exports.update = async function(req, res){
         user.email = req.body.email;
         // console.log(req.file);
         if(req.file){
+
+          if(user.avatar ){
+            fs.unlinkSync(path.join(__dirname, '..', user.avatar))
+
+          }
           // saving the path of the upload file into the avatar in the user
           user.avatar = User.avatarPath + '/' + req.file.filename
         }
         user.save();
+        req.flash("success", "Profile Picture Uploaded!");
         return res.redirect('back');
       })
 
     }
     catch(err){
-      req.flash('error', err);
+      req.flash('error','Error in Uploading the profile Picture');
       return res.redirect('back');
 
     }

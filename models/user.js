@@ -38,6 +38,21 @@
    filename: function (req, file, cb) {
      cb(null, file.fieldname  + "-" + Date.now());
    },
+   fileFilter: function(req, file, cb){
+       if(file.mimetype !== "avatar/png" && file.mimetype !== "avatar/jpg" && file.mimetype !==  "avatar/jpeg"){
+           
+           cb(null, false);
+       }
+       else{
+           cb(null, true);
+
+       }
+   },
+    limits: function(req, file, cd){
+    if (req.files.file.length > 1 * 1024 * 1024) {
+      return false;
+    }
+  }
  });
 
 //  static function/methods
