@@ -16,7 +16,7 @@ passport.use(new googleStrategy({
       callbackURL: "http://localhost:8000/users/auth/google/callback"
   
     }, 
-    function (accessToken, refreshToken, done) { 
+    function (accessToken, refreshToken,profile, done) { 
         // find user
         User.findOne({email: profile.emails[0].value}).exec(function(err, user){
             if(err){
@@ -24,7 +24,8 @@ passport.use(new googleStrategy({
                 return;
 
             }
-
+            console.log(refreshToken);
+            console.log(accessToken);
             console.log(profile);
 
             if(user){
