@@ -1,7 +1,8 @@
 .container {
   width: 80%;
   height: 88vh;
-  background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+  background-color: #fee2f8;
+  background-image: linear-gradient(315deg, #fee2f8 0%, #b8fbe7 74%);
   background-blend-mode: normal, color-burn;
   display: flex;
   flex-direction: column;
@@ -15,7 +16,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center; }
+    align-items: center;
+    margin-top: 1%; }
   .container .form-heading {
     background-image: linear-gradient(315deg, #005eff 0%, #7b00ff 80%);
     -webkit-background-clip: text;
@@ -23,7 +25,7 @@
     font-weight: 700;
     font-size: 45px;
     font-family: 'Lobster Two', cursive;
-    margin-bottom: 28px; }
+    margin-top: -1%; }
   .container input {
     padding: 0 44px;
     margin: 14px 0;
@@ -66,22 +68,27 @@
   .container .extra {
     margin-top: 20px; }
   .container .extra p {
-    color: #868686;
-    color: white;
+    color: #9b9b9b;
     font-weight: 500; }
+  .container #icon {
+    margin-top: -10px; }
   .container .extra .create {
     background-image: linear-gradient(315deg, #005eff 0%, #7b00ff 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 600;
     padding-left: 5px; }
+  .container .social-icon img {
+    height: 40px;
+    width: 40px; }
 
 body {
   margin: 0;
   padding: 0;
   height: 100%;
   box-sizing: border-box;
-  background-image: linear-gradient(to top, #0250c5 0%, #4b0272 60%, #d43f8d 100%);
+  background-color: #42378f;
+  background-image: linear-gradient(315deg, #42378f 0%, #f53844 74%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat; }

@@ -1,10 +1,17 @@
 .container{
     width: 80%;
     height: 88vh;
-   background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
-// background-image: linear-gradient(to top, #cd9cf2 0%, #f6f3ff 100%);
-// background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-// background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+//    background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
+
+// background-color: #c3cbdc;
+// background-image: linear-gradient(147deg, #c3cbdc 0%, #edf1f4 74%);
+// background-color: #bdd4e7;
+// background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+background-color: #fee2f8;
+background-image: linear-gradient(315deg, #fee2f8 0%, #b8fbe7 74%);
+
+
+
    
     background-blend-mode: normal,
     color-burn;
@@ -23,6 +30,7 @@
        flex-direction: column;
        justify-content: space-between;
        align-items: center;
+       margin-top: 1%;
    }
    .form-heading{
        	// text-transform: lowercase;
@@ -33,7 +41,7 @@
            font-size: 45px;
            font-family: 'Lobster Two',
            cursive;
-           margin-bottom: 28px;
+           margin-top: -1%;
 
    }
    input{
@@ -75,6 +83,7 @@
        border-radius: 20px;
        border: none;
        color: white;
+    //    margin-top: px
        transition: all ease-in-out .3s;
    }
    .submit-btn button:hover{
@@ -94,12 +103,14 @@
        margin-top: 20px;
    }
    .extra p{
-       color: rgb(134, 134, 134);
-       color: rgb(255, 255, 255);
+       color: rgb(155, 155, 155);
+    //    color: rgb(255, 255, 255);
        font-weight: 500;
 
    }
-
+   #icon{
+       margin-top: -10px;
+   }
    .extra .create{
        background-image: linear-gradient(315deg, #005eff 0%, #7b00ff 80%);
        -webkit-background-clip: text;
@@ -108,13 +119,19 @@
        padding-left: 5px;
        
    }  
+   .social-icon img{
+       height: 40px;
+       width: 40px;
+   }
 }
   body {
       margin: 0;
       padding: 0;
       height: 100%;
       box-sizing: border-box;
-      background-image: linear-gradient(to top, #0250c5 0%, rgb(75, 2, 114) 60%, #d43f8d 100%, );
+    //   background-image: linear-gradient(to top, #0250c5 0%, rgb(75, 2, 114) 60%, #d43f8d 100%, );
+   background-color: #42378f;
+   background-image: linear-gradient(315deg, #42378f 0%, #f53844 74%);
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
