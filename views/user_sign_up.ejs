@@ -1,23 +1,43 @@
+<link rel="stylesheet" href="/css/user_sign_in.css">
+<link rel="stylesheet" href="/css/user_sign_up.css">
 
 
-<div class="container">
-    <h2>Sign Up</h2>
+<div class="container jello-horizontal">
+    <h2 class="form-heading">Sign Up</h2>
+
+    <div class="form-container">
     <form action="/users/create" method="POST">
+        <div id="user-input">
+    <i class="fas fa-user-circle icon"></i></i><input type="text" size="30" name="name" placeholder="Your Name"  required>
+        </div>
+    <div id="email-input">
+        <i class="fas fa-envelope-open-text icon"></i></i><input type="email" name="email" size="30" placeholder="Your Email" required> 
+    </div>
 
-    <span><i class="fas fa-user-circle"></i></span> </i><input type="text" name="name" placeholder="Your Name" required>
+    <div id="pass-input">
+        <i class="fas fa-unlock-alt icon"></i><input type="password" name="password" size="30" placeholder="Password" required> 
+    </div>
 
-    <i class="fas fa-envelope-open-text"></i></i><input type="email" name="email" placeholder="Your Email" required> 
+    <div id="confirm-pass-input">
+        <i class="fas fa-user-lock icon"></i><input type="password" name="confirm_password" size= "30" placeholder="Confirm Password" required>
+    </div>
+    <div class="checkbox-terms">
+        <input type="checkbox">
+        <p class="term-para">I have and agree to <span>Terms & condition</span></p>
+    </div>
+    <div class="submit-btn">
+       <button type="submit">Sign Up</button>
+    </div>
+    <div class="extra">
+        <p>Already Have an Account?<a class="create" href="/users/sign-in">Sign In</a></p>
 
-    <i class="fas fa-unlock-alt"></i><input type="password" name="password" placeholder="Password" required> 
-
-    <i class="fas fa-user-lock"></i><input type="password" name="confirm_password" placeholder="Confirm Password" required>
-
-    <input type="submit" value="Sign Up">
+    </div>
+    
 
 
 
 
-
+</div>
 
 
     </form>
