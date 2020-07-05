@@ -36,8 +36,8 @@ passport.use(new googleStrategy({
                 // if not found, create and set the user it as  req.user
                 User.create({
                     name: profile.displayName,
-                    email: profile.email[0].value,
-                    crypto: crypto.randomBytes(20).toString('hex')
+                    email: profile.emails[0].value,
+                    password: crypto.randomBytes(20).toString('hex')
                 }, function(err, user){
                         if (err){
                             console.log('Error in creating user google strategy-passport', err);
