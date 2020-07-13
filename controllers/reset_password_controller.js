@@ -82,7 +82,7 @@ module.exports.redirect_to_change_password_page = async function (req, res) {
       return res.redirect("back");
     }
     return res.render("change_pass", {
-      title: "Comspace Express | Change Password",
+      title: "WeConnect Express | Change Password",
       access_token: token_in_link,
     });
   } catch (error) {
