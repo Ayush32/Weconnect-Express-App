@@ -15,8 +15,8 @@ module.exports.render_email_page = async (req, res) => {
     //user should not be logged in before accessing this page or using this action
     return res.redirect("back");
   }
-  return res.render("forgot_password_enter_mail", {
-    title: "WeConnect Express",
+  return res.render("forgot_password_enter_mail",{
+    titleName: 'WeConnect | Enter Mail'
   });
 };
 /* send the mail to email id
@@ -82,7 +82,7 @@ module.exports.redirect_to_change_password_page = async function (req, res) {
       return res.redirect("back");
     }
     return res.render("change_pass", {
-      title: "WeConnect Express | Change Password",
+      titleName: "WeConnect Express | Change Password",
       access_token: token_in_link,
     });
   } catch (error) {
