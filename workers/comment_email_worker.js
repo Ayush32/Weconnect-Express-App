@@ -10,6 +10,6 @@ queue.process('emails', function(job, done) {
     console.log('Emails worker is processing a job', job.data) ;
 
     commentsMailer.newComment(job.data);
-    data();
+    done();
 
  })
