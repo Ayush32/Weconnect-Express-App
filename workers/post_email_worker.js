@@ -1,5 +1,5 @@
 /*
- *   Copyright (c) 2020 
+ *   Copyright (c) 2020
  *   All rights reserved.
  */
 const queue = require("../config/kue");

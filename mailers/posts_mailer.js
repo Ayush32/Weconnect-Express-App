@@ -6,7 +6,7 @@
  const nodeMailer = require('../config/nodemailer')
 
  exports.newPost = (post) => {
-     let htmlString = nodeMailer.renderTemplate({post:post}, './posts/new_post.ejs');
+     let htmlString = nodeMailer.renderTemplate({post:post}, '/posts/new_post.ejs');
      console.log('inside new post mailer');
 
      nodeMailer.transporter.sendMail({

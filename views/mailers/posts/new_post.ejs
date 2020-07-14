@@ -1,22 +1,8 @@
-<div class="container">
-    <div class="heading">
-    <h3>Welcome to our WeConnect-Express App!</h3>
-    </div>
-    <div class="user-name">
-    <div>Hey, <b><%= post.user.name%>!</b></div>
-    </div>
-    <div class="info">
-        <p>You're receiving this email because you have an WeConnect-Express account and this is social media app. I would Like to inform you that. <br>
-            <strong>Your post is published on WeConnect.</strong></p>
-    </div>
-    <div class="comment">
-        <p>Your post: <b> <%= post.content %></b> </p>
-    </div>
-    <div class="thank">
-        <button type="button">Thankyou!!</button>
-    </div>
-    <br>
-    <div>
-        <h4>WeConnect-Express</h4>
-    </div>
+<div style="background-color: rgb(109, 235, 193);">
+    <h1>Hey, <%=post.user.email%></h1>
+    <h2>Your Post:</h2>
+    <strong><%= post.content%></strong>
+    <p><b>Is uploaded to WeConnect Express</b></p>
+    <p><b>Thank you for using our Services</b></p>
+    <h1>| WeConnect Express |</h1>
 </div>
