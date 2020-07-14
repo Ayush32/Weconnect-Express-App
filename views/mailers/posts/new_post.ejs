@@ -1,17 +1,16 @@
-<link rel="stylesheet" href="/css/new_comment.css">
 <div class="container">
     <div class="heading">
     <h3>Welcome to our WeConnect-Express App!</h3>
     </div>
     <div class="user-name">
-    <div>Hey, <b><%= comment.user.name%>!</b></div>
+    <div>Hey, <b><%= post.user.name%>!</b></div>
     </div>
     <div class="info">
         <p>You're receiving this email because you have an WeConnect-Express account and this is social media app. I would Like to inform you that. <br>
-            <strong>Your comment is published on WeConnect.</strong></p>
+            <strong>Your post is published on WeConnect.</strong></p>
     </div>
     <div class="comment">
-        <p>Your Comment: <b> <%= comment.content %></b> </p>
+        <p>Your post: <b> <%= post.content %></b> </p>
     </div>
     <div class="thank">
         <button type="button">Thankyou!!</button>
