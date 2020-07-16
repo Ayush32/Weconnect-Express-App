@@ -1,0 +1,11 @@
+.dropdown .dropdown-menu {
+  background-color: black; }
+
+.dropdown a:hover {
+  color: blue; }
+
+.dropdown a {
+  color: red; }
+
+.action-buttons {
+  margin-top: -10px; }

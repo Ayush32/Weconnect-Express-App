@@ -4,7 +4,7 @@
 
         </section>
         <section id="feed-posts" class="col-sm-6 mt-4">
-            <%if(locals.user){%>
+            <% if(locals.user){%>
             <form action="/posts/create" id="new-post-form" method="POST">
                 <div class="form-group mb-1">
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" cols=1 name="content"
@@ -50,3 +50,4 @@
         </div>
 </div>
 <script src="/js/home_post.js"></script>
+<script src="/js/home.js"></script>

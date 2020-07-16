@@ -2,7 +2,7 @@
     <div class="card-body">
 
         <!-- options to delete a post and stuff -->
-        <% if(locals.user && locals.user.id==post.user.id){ %>
+        <% if(locals.user&&locals.user.id==post.user.id){ %>
         <div class="dropdown">
             <a class="float-right" href="" id="more_options<%=post._id%>" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
@@ -12,23 +12,30 @@
                 <a class="dropdown-item delete-post-button" href="/posts/destroy/<%=post.id%>"><i
                         class="fas fa-trash-alt"></i>
                     Delete</a>
-                    <a class="dropdown-item" href="#"><i class="fas fa-bookmark"></i>&nbsp;Save Post</a>
+                     <a class="dropdown-item" href="#"><i class="fas fa-bookmark"></i>&nbsp;Save Post</a>
                     <a class="dropdown-item" href="#"><i class="fas fa-eye-slash"></i>&nbsp;Hide Post</a>
             </div>
         </div>
         <%}%>
- 
+
+
         <h5 class="card-title"><%=post.user.name%></h5>
-         <div class="card-text mt-2"><small><%=post.user.updatedAt.toString().substr(0, 15)%></small></div>
-        <p class="card-text" style="margin-top:12px"><%=post.content%></p>
-        <div class="card-text mt-2"><small>11:30 PM</small></div>
         
+        <div class="card-text mt-2 mb-2"><small><%=post.user.updatedAt.toString().substr(0, 15)%></small></div>
+        <p class="card-text"><%=post.content%></p>
+        <div class="card-text mt-2"><small>11:30 PM</small></div>
         <hr>
 
         <div class="align-middle action-buttons">
             <!-- like button on post -->
-            <a data-toggle="collapse" href="" role="button" aria-expanded="false" aria-controls=""><i class="fas fa-heart"></i></a>&nbsp;&nbsp;&nbsp;
-           
+            <%if(locals.user){%>
+            <a href="/likes/toggle/?id=<%=post._id%>&type=Post" id="like-<%=post._id%>" class="like-buttons"
+                data-toggle="false" data-likes="<%=post.likes.length%>"><i class="far fa-heart"></i>
+                <span><%=post.likes.length%></span> </a>
+            &nbsp&nbsp&nbsp
+            <%}else{%>
+            <%=post.likes.length%> Likes&nbsp&nbsp
+            <%}%>
             <!-- comment button on post -->
             <a data-toggle="collapse" href="#collapse<%=post._id%>" role="button" aria-expanded="false"
             aria-controls="collapse<%=post._id%>"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
@@ -36,17 +43,16 @@
             <a href=""><i class="fas fa-paper-plane"></i></a>
         </div>
     </div>
-
     <div class="collapse post-comments mr-2 ml-2" id="collapse<%=post._id%>">
         <%if(locals.user){%>
-        <form action="/comments/create" method="POST" class="new-comment-form" style="margin-top: 10px;">
+        <form action="/comments/create" method="POST" class="new-comment-form">
             <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username"
                 aria-describedby="basic-addon1" name="content" required>
             <input type="hidden" name="post" value="<%=post._id%>">
-            <button type="submit" data-toggle="tooltip" data-placement="top" title="comment" class="btn btn-danger btn-sm mt-2 mb-2 mr-2">Add Comment</button>
+            <button type="submit" class="btn btn-primary btn-sm mt-2 mb-2 mr-2">Add Comment</button>
         </form>
         <!-- comments list container -->
-        <hr style=" background-color: grey;height: 1px;border: none;">
+        <hr>
         <div class="post-comments-lister-list pl-4 pr-4">
             <div id="post-comments-<%=post._id%>">
                 <%for(comment of post.comments){%>
@@ -59,3 +65,7 @@
                 <%}%>
     </div>
 </div>
+
+   
+
+   
