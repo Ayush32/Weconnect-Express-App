@@ -26,7 +26,7 @@
         <%if(locals.user){%>
         <a href="/likes/toggle/?id=<%=comment._id%>&type=Comment" id="like-<%=comment._id%>" class="like-buttons"
             data-likes="<%=comment.likes.length%>" data-toggle="false"><i class="far fa-heart"></i>
-            <span><%=comment.likes.length%></span> </a> &nbsp
+            <span><%=comment.likes.length%></span> </a>&nbsp;
         <%}else{%>
         <%=comment.likes.length%> Likes
         <%}%>

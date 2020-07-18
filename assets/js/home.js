@@ -16,8 +16,10 @@ let add_click_action_to_like_button = function () {
           console.log(likes_count);
           if (data.data.deleted) {
             likes_count = parseInt(likes_count) - 1;
+            
           } else {
             likes_count = parseInt(likes_count) + 1;
+           
           }
           button.attr("data-likes", likes_count);
           button.find("span").html(likes_count);

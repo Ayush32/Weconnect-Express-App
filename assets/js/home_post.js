@@ -80,7 +80,7 @@ let new_post_dom = (data) =>
               .toString()
               .substr(0, 15)}</small></div>
             <p class="card-text">${data.post_content}</p>
-                    <div class="card-text mt-2"><small>11:30 PM</small></div>
+                <div class="card-text mt-2"><small>11:30 PM</small></div>
 
             
             <hr>
@@ -98,13 +98,12 @@ let new_post_dom = (data) =>
                 }"><i class="far fa-comment"></i></a>&nbsp&nbsp&nbsp
             <a href=""><i class="fas fa-paper-plane"></i></a>
         </div>
-        <div class="collapse post-comments mr-2 ml-2" id="collapse_${
+        <div class="collapse post-comments mr-2 ml-2 mt-2" id="collapse_${
           data.post_id
         }">
             
             <form action="/comments/create" method="POST" class="new-comment-form">
-                <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username"
-                    aria-describedby="basic-addon1" name="content" required>
+                <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username" aria-describedby="basic-addon1" name="content" required>
                 <input type="hidden" name="post" value="${data.post_id}">
                 <button type="submit" class="btn btn-primary btn-sm mt-2 mb-2 mr-2">Add Comment</button>
             </form>
@@ -112,6 +111,7 @@ let new_post_dom = (data) =>
             <hr>
             <div class="post-comments-lister-list pl-4 pr-4">
                 <div id="post-comments-${data.post_id}">
+
                 
                 </div>
             </div>
@@ -177,7 +177,7 @@ let comment_creator = function (new_comment_form)
                 {
                     let new_comment = new_comment_dom(data.data);
                     $(`#post-comments-${data.data.post_id}`).prepend(new_comment);
-                    $(`#post_${data.data.post_id} .new-comment-form input`)[0].value = "";
+                    $(`#post-${data.data.post_id} .new-comment-form input`)[0].value ="";
                     noty_flash('success', 'Comment posted Successfully!');
                     add_like_button_functionality($(`#like-${data.data.comment_id}`))
                     delete_comment($(' .delete-comment-button', new_comment));

@@ -43,7 +43,7 @@
             <a href=""><i class="fas fa-paper-plane"></i></a>
         </div>
     </div>
-    <div class="collapse post-comments mr-2 ml-2" id="collapse<%=post._id%>">
+    <div class="collapse post-comments mr-2 ml-2 mt-2" id="collapse<%=post._id%>">
         <%if(locals.user){%>
         <form action="/comments/create" method="POST" class="new-comment-form">
             <input type="text" class="form-control" placeholder="Add a new Comment..." aria-label="Username"
