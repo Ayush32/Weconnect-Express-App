@@ -12,8 +12,8 @@
     //  this defines the object id of the liked object
      likeable :{
          type: mongoose.Schema.ObjectId,
-         require: true,
-         refPat: 'onModel'
+         required: true,
+         refPath: 'onModel'
      },
     //  this filed is used for defining the type of the linked object since this is a dynamic reference 
      onModel: {

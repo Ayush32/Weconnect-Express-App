@@ -65,8 +65,7 @@ let new_post_dom = (data) =>
                     <i class="fas fa-ellipsis-h"></i>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="more_options_${
-                  data.post_id
-                }">
+                  data.post_id}">
                     <a class="dropdown-item delete-post-button" href="/posts/destroy/${
                       data.post_id
                     }"><i
@@ -79,7 +78,7 @@ let new_post_dom = (data) =>
             <div class="card-text mt-2"><small>${data.updatedAt
               .toString()
               .substr(0, 15)}</small></div>
-            <p class="card-text">${data.post_content}</p>
+            <p class="card-text mt-2">${data.post_content}</p>
                 <div class="card-text mt-2"><small>11:30 PM</small></div>
 
             
@@ -177,7 +176,7 @@ let comment_creator = function (new_comment_form)
                 {
                     let new_comment = new_comment_dom(data.data);
                     $(`#post-comments-${data.data.post_id}`).prepend(new_comment);
-                    $(`#post-${data.data.post_id} .new-comment-form input`)[0].value ="";
+                    $(`#post_${data.data.post_id} .new-comment-form input`)[0].value ="";
                     noty_flash('success', 'Comment posted Successfully!');
                     add_like_button_functionality($(`#like-${data.data.comment_id}`))
                     delete_comment($(' .delete-comment-button', new_comment));

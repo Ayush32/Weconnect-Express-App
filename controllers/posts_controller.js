@@ -39,7 +39,9 @@ const Like = require('../models/like');
              message: 'Post Created'
            })
          }
+         return res.redirect("back");
          req.flash('success','New Post Published!')
+         
          return res.redirect("back");
 
      }

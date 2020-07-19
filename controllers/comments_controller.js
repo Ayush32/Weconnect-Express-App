@@ -28,7 +28,7 @@ const User = require('../models/user')
             post.comments.push(comment);
            post.save();
 
-           comment = await comment.populate('user', 'name email').execPopulate();
+          comment = await comment.populate('user', 'name email').execPopulate();
           //  commentsMailer.newComment(comment);
          let job =  queue.create('emails', comment).save(function(err){
             if(err){
@@ -45,7 +45,7 @@ const User = require('../models/user')
                 comment_id:comment._id,
                 user_name:comment.user.name,
                 comment_content:comment.content,
-                post_id:comment.post_id
+                post_id:comment.post._id,
               },
               message: 'Comment'
             })

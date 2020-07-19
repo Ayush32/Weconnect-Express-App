@@ -5,6 +5,7 @@
 const Like = require('../models/like');
 const Post = require('../models/post')
 const Comment = require('../models/comment');
+const User = require('../models/user')
 
 module.exports.toggleLike = async function(req, res){
     try {
@@ -21,7 +22,7 @@ module.exports.toggleLike = async function(req, res){
         //   check if a like already exists
         let existingLike = await Like.findOne({
             likable: req.query.id,
-            noModel: req.query.type,
+            onModel: req.query.type,
             user: req.user._id,
         })
 
@@ -45,12 +46,12 @@ module.exports.toggleLike = async function(req, res){
             likable.likes.push(newLike);
             likable.save();
         }
-
         return res.status(200).json({
             message: "Request successfully",
-            data:{
-                deleted: deleted
-            }
+            data:
+            {
+                deleted:deleted,
+            },
         })
     }
 
