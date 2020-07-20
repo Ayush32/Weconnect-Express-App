@@ -28,6 +28,31 @@
             <h4>
                 Friends
             </h4>
+            <ul class="list-group">
+                <% if(locals.friends.length ==0) {%>
+                    <h6>
+                        Friends list is empty.
+                    </h6>
+                    <%}%>
+                    <%for(f of locals.friends){ %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                             <div class='d-flex justify-content-around align-items-center'>
+                            <div style="height: 40px; width:40px;border-radius:50%;">
+                                <img src="<%= f.friend_avatar%>" style ="height: 100%; width:100%;border-radius:inherit" alt="">
+
+                            </div>
+                            <div class="ml-2">
+                                <a href="/users/profile/<%=f.friend_id%>"><%=f.friend_name%></a>
+
+                            </div>
+                        </div>
+                        <a class="badge badge-primary"><i class="fas fa-comment"></i></a>
+
+
+                        </li>
+                    <%}%>
+
+            </ul>
            
         </div>
 
