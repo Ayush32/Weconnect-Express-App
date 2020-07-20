@@ -10,10 +10,12 @@
  const userController = require('../controllers/users_controller');
 
  const passport = require('passport');
+ const friendship_controller = require('../controllers/friendship_controller');
 
 
 
- router.get('/profile/:id',passport.checkAuthentication, userController.profile);
+router.get('/profile/:id', passport.checkAuthentication, usersController.profile);
+router.get('./profile/:id/toggleFriends', friendship_controller.toggleFriends)
  router.post('/update/:id',passport.checkAuthentication, userController.update);
 
  router.get('/sign-up', userController.signUp);
