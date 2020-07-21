@@ -65,7 +65,7 @@ module.exports.home = async function (req, res) {
 
     //step 3= rendering the page with all the posts and passing all the users to it.
     var options = {
-      titleName: "ComSpace Express",
+      titleName: "WeConnect Express",
       posts: posts,
       all_users: users,
       friends: friends,
