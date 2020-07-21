@@ -22,6 +22,7 @@ const MongoStore = require('connect-mongo')(session);
 
 const sassMiddleware = require('node-sass-middleware');
 
+
 // flash Middleware
 const customMware = require('./config/middleware');
 app.use(sassMiddleware({

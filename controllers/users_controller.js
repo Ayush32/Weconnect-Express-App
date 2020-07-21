@@ -3,24 +3,52 @@
  *   All rights reserved.
  */
 
- const User = require('../models/user');
+const User = require('../models/user');
 const { findByIdAndUpdate } = require('../models/user');
 const { use } = require('passport');
-
+const Friendship = require('../models/friendship');
 const fs = require('fs');
 const path = require('path');
 
 
 // lets keep it same as before
-module.exports.profile = function (req, res) {
-  User.findById(req.params.id, function(err,user){
-  return res.render("user_profile", {
-    titleName: "Profile",
-    profile_user: user
-  });
-  })
-};
+module.exports.profile = (req, res) => {
+  User.findById(req.params.id, function (error, user) {
+    if (error) {
+      console.log("error in finding the user profile!");
+      return;
+    }
 
+    let are_friends = false;
+
+    Friendship.findOne(
+      {
+        $or: [
+          { from_user: req.user._id, to_user: req.params.id },
+          { from_user: req.params.id, to_user: req.user._id },
+        ],
+      },
+      function (error, friendship) {
+        if (error) {
+          console.log("There was an error in finding the friendship", error);
+          return;
+        }
+        if (friendship) {
+          are_friends = true;
+        }
+        /* console.log(req.user);
+            console.log(req.user._id, '********', req.params.id, '*******') */
+        var options = {
+          user_name: "ayush gupta",
+          titleName: "WeConnect Express",
+          profile_user: user /* it is the user whose profile i am currently browsing */,
+          are_friends: are_friends,
+        };
+        return res.render("user_profile", options);
+      }
+    );
+  });
+};
 //  profile update
 
 module.exports.update = async function(req, res){

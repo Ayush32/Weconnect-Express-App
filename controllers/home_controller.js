@@ -4,84 +4,78 @@
  */
 
 const Post = require('../models/post');
-const { populate } = require('../models/post');
+// const { populate } = require('../models/post');
 const User = require('../models/user');
-const { post } = require('../routes/users');
+// const { post } = require('../routes/users');
 const Friendship = require('../models/friendship');
 
 
 //  Another controller which access by routes
-module.exports.home = async function(req,res){
-    
+module.exports.home = async function (req, res) {
+  try {
+    // step 1=populating all the posts in the home page
+    let posts = await Post.find({})
+      .sort("-createdAt")
+      .populate("user") //populate user in the post model
+      .populate(
+        //we need to populate comments in the post model, and inside the comments we need to populate the user too.
+        {
+          path: "comments",
+          populate: {
+            path: "user",
+          },
+          populate: {
+            path: "likes",
+          },
+        }
+      )
+      .populate("likes");
 
-    try{
-         // populate the suer of each post
-         let posts = await Post.find({})
-         .sort('-createdAt')
-           .populate("user")
-           .populate({
-             path: "comments",
-             populate: {
-               path: "user",
-             },
-             populate:{
-               path: 'likes'
-             }
-           }).populate('likes')
+    //step 2= finding all the users which will then be passed to the rendering function.
+    let users = await User.find({});
 
-           let users = await User.find({});
+    /* new step 4: finding the friends of the logged in user */
+    let friends = new Array();
+    if (req.user) {
+      /* friends list will only be loaded if thhe user is signed in */
+      let all_friendships = await Friendship.find({
+        $or: [{ from_user: req.user._id }, { to_user: req.user._id }],
+      })
+        .populate("from_user")
+        .populate(
+          "to_user"
+        ); /* checking the friendship model in the fields "from user" and "to_user". the current logged in user has to be in one of them. and at the same time we are also populating it to see the user ids*/
 
-           let friends = new Array();
-           if(req.user)
-           {
-             let all_friendships =  await Friendship.find({$or:[{from_user:req.user._id},{to_user:req.user._id}]})
-             .populate('from_user').populate('to_user')
-             for (let f of all_friendships){
-               if(f.from_user._id.toString() == req.user._id.toString())
-               {
-                 friends.push({
-                   friend_name: f.to_user.name,
-                   friend_id: f.to_user._id,
-                   friend_avatar: f.to_user.avatar,
-
-                 })
-               }
-              else if(f.to_user._id.toString() == req.user._id.toString())
-               {
-                 friends.push({
-                   friend_name: f.from_user.name,
-                   friend_id: f.from_user._id,
-                   friend_avatar: f.form_user.avatar,
-
-                 });
-               }
-             }
-           }
-
-              let users = await User.find({});
-              return res.render("home", {
-                titleName: "WeConnect | Home",
-                posts: posts,
-                all_users: users,
-                friends: friends
-              });
-       } 
-       catch(err){
-
-       console.log('Error',err);
-       return;
-
+      for (let fs of all_friendships /* storing all the friendships in an array so that it is easy to load them in the front end quickly */) {
+        if (fs.from_user._id.toString() == req.user._id.toString()) {
+          friends.push({
+            friend_name: fs.to_user.name,
+            friend_id: fs.to_user._id,
+            friend_avatar: fs.to_user.avatar,
+          });
+        } else if (fs.to_user._id.toString() == req.user._id.toString()) {
+          friends.push({
+            friend_name: fs.from_user.name,
+            friend_id: fs.from_user._id,
+            friend_avatar: fs.from_user.avatar,
+          });
+        }
+      }
     }
 
-
-
-   
-
-     
-       
-}
-
-
+    //step 3= rendering the page with all the posts and passing all the users to it.
+    var options = {
+      titleName: "ComSpace Express",
+      posts: posts,
+      all_users: users,
+      friends: friends,
+    };
+    return res.render("home", options);
+  } catch (error) {
+    console.log("Error", error);
+    return;
+  }
+};
 // using then
 // Post.find({}).populate('comments').then(function());
 

@@ -14,8 +14,8 @@
 
 
 
-router.get('/profile/:id', passport.checkAuthentication, usersController.profile);
-router.get('./profile/:id/toggleFriends', friendship_controller.toggleFriends)
+router.get('/profile/:id', passport.checkAuthentication, userController.profile);
+router.get('/profile/:id/toggleFriends', friendship_controller.toggleFriends)
  router.post('/update/:id',passport.checkAuthentication, userController.update);
 
  router.get('/sign-up', userController.signUp);

@@ -5,7 +5,7 @@
     <div class="row">
         <section class="col-sm-4 pb-2 pt-2">
             <!-- profile picture -->
-           <div class="profile-picture" class="ml-auto mr-auto mt-2 mb-2">
+           <div id="profile-picture" class="ml-auto mr-auto mt-2 mb-2">
                 <img src="<%=profile_user.avatar%>" alt="<%= profile_user.name%>">
            </div>
            <!-- name -->
@@ -14,7 +14,7 @@
            </div>
            <!-- update credentials -->
            <div class="text-center">
-               <% if(user.id == profile.user.id){ %>
+               <% if(user.id == profile_user.id){ %>
                 <!-- if user matches with profile then only can change their name -->
                 <button type="button" class="btn btn-warning mt-3" data-toggle= "modal" data-target="#exampleModalCenter">
                     Update Credentials
@@ -49,7 +49,7 @@
                             </div>
                             <!-- modal footer -->
                             <div class="modal-footer">
-                                <button type="button" class="btn-btn-secondary" data-dismiss="modal">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">
                                     Close
                                 </button>
                                 <button type="submit" class="btn btn-success">
