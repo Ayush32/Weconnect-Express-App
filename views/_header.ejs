@@ -15,7 +15,7 @@
     </form>
     <ul class="navbar-nav ml-auto ">
       <% if(locals.user){ %>
-      <li class="nav-item active">
+      <li class="nav-item-1 active mr-2">
         <a class="nav-link" href="/users/profile/<%=locals.user.id %>"><%= user.name %><span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
@@ -23,7 +23,7 @@
       </li>
      <% } else { %>
       <li class="nav-item">
-        <a class="nav-link btn btn-success text-white mr-3 px-3 "href="/users/sign-in" type="button"  >Sign In</a>
+        <a class="nav-link btn btn-success text-white mr-2 px-3"href="/users/sign-in" type="button"  >Sign In</a>
       </li>
       <li class="nav-item">
         <a class="nav-link btn btn-success text-white" href="/users/sign-up" type="button" >Sign Up</a>
