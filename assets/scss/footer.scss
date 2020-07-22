@@ -4,10 +4,9 @@ footer{
     background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 5px 20px;
+    // flex-wrap: nowrap;
+   justify-content:space-between;
+    padding: 30px 20px;
     
     
     // position: fixed
@@ -17,14 +16,14 @@ footer{
         margin: 0 20px;
     }
     .footer-heading h2{
-        margin-top: 45px;
+        margin-top: 4.2rem;
         color: white;
         font-size: 30px;
-        letter-spacing: 6px;
+        letter-spacing: 1px;
     }
     .list-item{
         padding: 0 25px;
-        margin-top: 5px;
+        margin-bottom: 5px;
     }
 
     ul li{
@@ -44,5 +43,13 @@ footer{
         
     }
     
+}
+
+@media screen and (max-width:576px){
+    .footer-heading h2{
+        font-size: 21px!important;
+        letter-spacing: 0;
+
+    }
 }
 
