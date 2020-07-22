@@ -1,2 +1,8 @@
 .navbar {
   background-color: black !important; }
+  .navbar .navbar-brand {
+    letter-spacing: 8px !important;
+    font-weight: 500;
+    background: -webkit-linear-gradient(#b40e0e, #333);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; }
