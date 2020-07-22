@@ -114,3 +114,11 @@ hr{
 :root a:hover {
     text-decoration: none;
 }
+
+body,html{
+    overflow-y: scroll;
+}
+body::-webkit-scrollbar{
+    display: none;
+    
+}
