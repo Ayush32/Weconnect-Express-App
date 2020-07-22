@@ -33,16 +33,19 @@
 
       $('#send-message').click(function(event){
          event.preventDefault();
-        let msg  =  $('#message').val();
-        $('')
+        let message  =  $('#message').val();
+        
+       
 
-        if(msg!= ''){
+        if(message!= ''){
+          $('#message').val('');
           self.socket.emit('send_message',{
-            message: msg,
+            message: message,
             user_email: self.userEmail,
             chatroom: 'WeConnect'
           })
         }
+         
       })
 
       self.socket.on('receive_message',function(data){
