@@ -9,6 +9,10 @@
     background-image: linear-gradient(319deg, #663dff 0%, #aa00ff 37%, #cc4499 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; }
+  .navbar .navbar-nav .nav-item .nav-link img {
+    margin-top: -5px;
+    height: 34px !important;
+    width: 38px !important; }
 
 @media screen and (max-width: 768px) {
   .navbar-nav .nav-item .nav-link {
