@@ -8,10 +8,11 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
 
 const user = require('../models/user');
 const User = require('../models/user');
+const env = require('./environment');
 
 let opts  = {
     jwtFromRequest:ExtractJWT.fromAuthHeaderAsBearerToken(),
-    secretOrKey: 'weconnect',
+    secretOrKey: env.jwt_secret ,
 }
 
 passport.use(new JWTStrategy(opts, function(jwtPayLoad, done){
