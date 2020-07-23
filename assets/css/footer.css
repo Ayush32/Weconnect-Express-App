@@ -47,5 +47,5 @@ footer {
 
 @media screen and (max-width: 576px) {
   .footer-heading h2 {
-    font-size: 21px !important;
+    font-size: 25px !important;
     letter-spacing: 2px; } }
