@@ -1,5 +1,5 @@
 .container{
-    width: 80%;
+    width: 100%;
     height: 88vh;
 //    background-image: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
 
@@ -191,3 +191,11 @@ background-image: linear-gradient(315deg, #fee2f8 0%, #b8fbe7 74%);
            transform: scale3d(1, 1, 1);
        }
    }
+
+// @media screen and (max-width:576px){
+//     .container{
+//         width: 90%;
+//     }
+
+
+// }
