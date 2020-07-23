@@ -1,14 +1,14 @@
 <!-- for deleting a comment -->
 <div id="comment_id_<%=comment.id%>">
     <!-- user will only be able to delete his own comments -->
-    <% if(locals.user && locals.user.id == comment.user.id){ %>
+    <% if(locals.user){ %>
     <div class="dropdown">
         <a class="float-right" href="" id="more_options<%=comment.id%>" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <i class="fas fa-ellipsis-h"></i>
         </a>
         <div class="dropdown-menu" aria-labelledby="more_options<%=comment.id%>">
-            <a class="dropdown-item delete-comment-button" href="/comments/destroy/<%=comment.id%>"><i
+            <a style="color:red;"  class="dropdown-item delete-comment-button" href="/comments/destroy/<%=comment.id%>"><i
                     class="fas fa-trash-alt"></i>
                 Delete</a>
         </div>

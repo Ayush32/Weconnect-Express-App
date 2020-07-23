@@ -42,7 +42,9 @@ hr {
     .row section:nth-child(3) #all-users-container::-webkit-scrollbar {
       display: none; }
     .row section:nth-child(3) #all-users-container .list-group-item {
-      background-color: black; }
+      background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); }
+  .row section:nth-child(3) a {
+    color: #3300ff; }
   .row section:nth-child(3) a:hover {
     text-decoration: none;
     color: red; }
@@ -64,7 +66,8 @@ hr {
   text-decoration: none; }
 
 body, html {
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); }
 
 body::-webkit-scrollbar {
   display: none; }
