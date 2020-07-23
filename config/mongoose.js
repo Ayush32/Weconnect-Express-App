@@ -3,9 +3,9 @@
  *   All rights reserved.
  */
 const mongoose = require('mongoose');
-
+const env = require('./environment');
 // connect to the database
-mongoose.connect('mongodb://localhost/weconnect_development');
+mongoose.connect(`mongodb://localhost/${env.db}`);
 
 const db = mongoose.connection;
 
