@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
 <div class="container-fluid">
     <div class="row">
         <section class="col-sm-3 mt-4">
@@ -76,10 +76,10 @@
     <%- include('chatting_engine') -%>
         </div>
 </div>
-<script src="/js/home_post.js"></script>
-<script src="/js/home.js"></script>
+<script src="<%= assetPath('js/home_post.js') %>"></script>
+<script src="<%= assetPath('js/home.js') %>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-<script src="/js/chat_engine.js"></script>
+<script src="<%= assetPath('js/chat_engine.js') %>"></script>
 
 <% if(locals.user){ %>
 <script>

@@ -8,5 +8,10 @@
   "css/user_profile.css": "css/user_profile-11338a5031.css",
   "css/user_sign_in.css": "css/user_sign_in-f3c669a864.css",
   "css/user_sign_up.css": "css/user_sign_up-d41d8cd98f.css",
-  "images/man.png": "images/man-4931440867.png"
+  "js/animation.js": "js/animation-e1e35655d0.js",
+  "js/app.js": "js/app-7d6aa156d1.js",
+  "js/chat_engine.js": "js/chat_engine-a22a046df5.js",
+  "js/home.js": "js/home-b27d4fc7f5.js",
+  "js/home_post.js": "js/home_post-6ee3eb6ba8.js",
+  "js/particles.min.js": "js/particles-fa7886abe4.min.js"
 }

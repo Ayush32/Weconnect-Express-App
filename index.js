@@ -5,8 +5,11 @@
 const express = require('express');
 const env = require('./config/environment');
 const logger  = require('morgan')
+
+
 const rfs = require('rotating-file-stream');
 const app = express();
+require("./config/view-helpers")(app);
 const port = 8000;
 // set layout 
 const expressLayouts = require('express-ejs-layouts');
