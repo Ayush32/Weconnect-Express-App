@@ -28,7 +28,6 @@
     "gulp-imagemin": "^7.1.0",
     "gulp-rev": "^9.0.0",
     "gulp-sass": "^4.1.0",
-    "gulp-uglify": "^3.0.2",
     "gulp-uglify-es": "^2.0.0",
     "jsonwebtoken": "^8.5.1",
     "kue": "^0.11.6",
