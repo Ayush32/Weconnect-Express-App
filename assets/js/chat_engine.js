@@ -2,7 +2,7 @@
  *   Copyright (c) 2020 
  *   All rights reserved.
  */
-
+// changing the comment
  class ChatEngine {
    constructor(chatBoxId, userEmail) {
      this.chatBox = $(`#${chatBoxId}`);
