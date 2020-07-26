@@ -8,7 +8,7 @@
    constructor(chatBoxId, userEmail) {
      this.chatBox = $(`#${chatBoxId}`);
      this.userEmail = userEmail;
-     this.socket = io.connect('http://34.201.164.169:5000');
+     this.socket = io.connect("http://100.25.191.162:5000");
 
      if(this.userEmail){
          this.connectionHandler();

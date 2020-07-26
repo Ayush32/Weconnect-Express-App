@@ -65,7 +65,7 @@ app.use('/uploads', express.static(__dirname + '/uploads'));
 app.use(logger(env.morgan.mode, env.morgan.options))
 
 // extract style and scripts  from sub pages into the layout
-app.set('layout extractStyles', true);
+app.set('layout extractStyles', false);
 app.set('layout extractScripts', true);
 
 
