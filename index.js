@@ -52,7 +52,7 @@ if(env.name == 'development'){
 
 }
 
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({extended: false}));
 
 app.use(cookieParser());
 
