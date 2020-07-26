@@ -5,8 +5,6 @@
 const express = require('express');
 const env = require('./config/environment');
 const logger  = require('morgan')
-
-
 const rfs = require('rotating-file-stream');
 const app = express();
 require("./config/view-helpers")(app);
@@ -32,6 +30,7 @@ const sassMiddleware = require('node-sass-middleware');
 const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(5000);
+// for running the chat server
 console.log('chat server is listening on port: 5000');
 
 const path  = require('path');
@@ -53,7 +52,7 @@ if(env.name == 'development'){
 
 }
 
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({extended: true}));
 
 app.use(cookieParser());
 
